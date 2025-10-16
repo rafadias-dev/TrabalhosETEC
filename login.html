@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delícias da Lua — Login</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/simple-icons-font@v9/font/simple-icons.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+
+    <header class="topbar">
+      <div class="brand">
+        <img src="img/iconsite.png" alt="Delícias da Lua" class="logo" />
+        <h1>Delícias da Lua</h1>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+      <nav class="menu" id="menu">
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="receitas_doces.html">Receitas Doces</a>
+        <a href="receitas_salgadas.html">Receitas Salgadas</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="contato.html">Contato</a>
+        <button id="toggleTheme2" aria-label="Alternar tema">🌙</button>
+      </nav>
+    </header>
+
+    <div class="login-container">
+      <form class="login-form">
+        <h2>Login 🌙</h2>
+
+        <div class="form-control-login">
+          <label for="username">Usuário:</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+
+        <div class="form-control-login">
+          <label for="password">Senha:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-2">Entrar</button>
+
+        <a href="#" class="forgot">Esqueceu a senha?</a>
+
+        <div class="divider">ou entre com</div>
+
+        <div class="social-login">
+          <button type="button" class="btn-icon google" aria-label="Entrar com Google">
+            <i class="si si-google"></i>
+          </button>
+          <button type="button" class="btn-icon twitter" aria-label="Entrar com X (Twitter)">
+            <i class="si si-x"></i>
+          </button>
+          <button type="button" class="btn-icon facebook" aria-label="Entrar com Facebook">
+            <i class="si si-facebook"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div
+        id="login-toast"
+        class="toast toast-pink align-items-center border-0 position-fixed bottom-0 end-0 m-3"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body">Mensagem do toast</div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>

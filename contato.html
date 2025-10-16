@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Delícias da Lua — Contato</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts.js"></script>
+    <link rel="icon" href="img/iconsite.png" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <img src="img/iconsite.png" alt="Delícias da Lua" class="logo" />
+        <h1>Delícias da Lua</h1>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+      <nav class="menu" id="menu">
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="receitas_doces.html">Receitas Doces</a>
+        <a href="receitas_salgadas.html">Receitas Salgadas</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="contato.html" class="active">Contato</a>
+        <button id="toggleTheme" aria-label="Alternar tema">🌙</button>
+      </nav>
+    </header>
+
+    <main class="contact-container">
+      <form id="contactForm" class="contact-form">
+        <h2>Entre em contato 🌙</h2>
+
+        <div class="form-control-login">
+          <label for="name">Nome</label>
+          <input type="text" id="name" name="name" placeholder="Digite seu nome" required />
+        </div>
+
+        <div class="form-control-login">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="exemplo@email.com" required />
+        </div>
+
+        <div class="form-control-login">
+          <label for="message">Mensagem</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Escreva sua mensagem..."
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="cta">Enviar Mensagem</button>
+        <p id="contactStatus" class="status-text"></p>
+      </form>
+    </main>
+
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div
+        id="contact-toast"
+        class="toast toast-pink align-items-center border-0 position-fixed bottom-0 end-0 m-3"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body">Mensagem do toast</div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Delícias da Lua - Feito com carinho</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>

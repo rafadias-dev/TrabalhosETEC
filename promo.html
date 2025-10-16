@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Promo — Delícias da Lua</title>
+  <style>
+    :root {
+      --bg: #0f1020;
+      --card: #11121f;
+      --accent: #a58bd6;
+      --light: #fff;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: Inter, system-ui, Arial;
+      background: linear-gradient(180deg, #0b1220 0%, #0f1630 100%);
+      color: var(--light);
+    }
+
+    .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .moon {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff7, #d6c7ff 20%, #7b6aa6 60%);
+      box-shadow: 0 0 40px #a58bd6aa, inset -20px -10px 60px #0008;
+      transform: translateY(-10px);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(-10px)
+      }
+
+      50% {
+        transform: translateY(10px)
+      }
+
+      100% {
+        transform: translateY(-10px)
+      }
+    }
+
+    .text {
+      margin-top: 18px;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 28px;
+      letter-spacing: 1px
+    }
+
+    .subtitle {
+      opacity: .9;
+      margin-top: 8px
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(#fff, #fff0);
+      filter: blur(6px);
+      animation: twinkle 2s linear infinite;
+    }
+
+    @keyframes twinkle {
+      0% {
+        opacity: .1
+      }
+
+      50% {
+        opacity: 1
+      }
+
+      100% {
+        opacity: .1
+      }
+    }
+
+    .bar {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #a58bd6, #ffd6f7);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: bar 12s linear forwards;
+    }
+
+    @keyframes bar {
+      to {
+        transform: scaleX(1)
+      }
+    }
+
+    .cta {
+      margin-top: 16px;
+      background: transparent;
+      border: 2px solid #fff2;
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap" id="wrap">
+    <div class="moon" id="moon"></div>
+    <div class="text">
+      <div class="title">Delícias da Lua</div>
+      <div class="subtitle">Receitas fáceis. Fotos encantadoras. Sabor lunar.</div>
+      <button class="cta" id="cta">Ver Receitas</button>
+    </div>
+  </div>
+  <div class="bar"></div>
+
+  <script>
+    // --- Script para narração (Web Speech API) e efeitos — gerado por IA (comentarários foram adicionados) ---
+    // Trecho gerado com ajuda da IA: texto da narração e timing.
+    const promoText = [
+      { t: 0, txt: "Bem-vindos à Delícias da Lua." },
+      { t: 2.5, txt: "Onde cada receita é um pedacinho de magia." },
+      { t: 6.0, txt: "Receitas fáceis e estéticas para surpreender." },
+      { t: 9.5, txt: "Fotos lindas, sabores incríveis — prontos em minutos." },
+      { t: 13.0, txt: "Visite nosso site e descubra a receita do dia!" }
+    ];
+
+    function speakSequence() {
+      if (!('speechSynthesis' in window)) return;
+      promoText.forEach((p, i) => {
+        setTimeout(() => {
+          const u = new SpeechSynthesisUtterance(p.txt);
+          u.lang = "pt-BR";
+          u.rate = 1;
+          u.pitch = 1.05;
+          // escolher voz disponível (navegador decide)
+          speechSynthesis.speak(u);
+        }, p.t * 1000);
+      });
+    }
+
+    // animação extra de partículas
+    function spawnSparkles(n = 8) {
+      const wrap = document.getElementById('wrap');
+      for (let i = 0; i < n; i++) {
+        const s = document.createElement('div');
+        s.className = 'sparkle';
+        s.style.left = (20 + Math.random() * 60) + '%';
+        s.style.top = (10 + Math.random() * 50) + '%';
+        s.style.animationDelay = (Math.random() * 2) + 's';
+        s.style.background = `radial-gradient(circle at 30% 30%, #fff8, ${["#ffd6f7", "#a58bd6", "#fff2"][Math.floor(Math.random() * 3)]} 40%)`;
+        wrap.appendChild(s);
+        setTimeout(() => s.remove(), 12000);
+      }
+    }
+
+    // iniciar tudo automaticamente
+    window.addEventListener('load', () => {
+      speakSequence();
+      spawnSparkles(18);
+      // spawn periódico
+      setInterval(() => spawnSparkles(6), 2200);
+      // botão CTA leva para o site principal
+      document.getElementById('cta').addEventListener('click', () => {
+        parent.location = "index.html";
+      });
+    });
+  </script>
+</body>
+
+</html>

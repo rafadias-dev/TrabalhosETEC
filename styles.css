@@ -1,0 +1,610 @@
+:root {
+  --bg: #fffafc;
+  --card: #fff;
+  --text: #2c2540;
+  --muted: #6b5f7a;
+  --accent: #a58bd6;
+  --accent-2: #ffd6f7;
+}
+
+html {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, Arial;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+    height: 100%;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: transparent;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(165, 139, 214, 0.18);
+  flex-shrink: 0;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.menu a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.menu a:hover {
+  background-color: var(--accent-2);
+}
+
+.menu button {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.menu button:hover {
+  background-color: var(--accent-2);
+}
+
+/* IA ajudou a fazer o menu botton */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 6px;
+  color: var(--text);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 18px auto;
+  padding: 12px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 20px;
+  align-items: center;
+}
+
+.hero-text h2 {
+  font-size: 34px;
+  margin: 0 0 8px;
+}
+
+.hero-text p {
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+.cta {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #313131;
+  padding: 10px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.hero-video iframe,
+.hero-video video {
+  width: 100%;
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 10px 40px rgba(165, 139, 214, 0.12);
+  background: #ffffff;
+}
+
+.featured {
+  margin-top: 22px;
+}
+
+.card {
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.recipe-card {
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.18s;
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.2s;
+}
+
+.recipe-card:hover img {
+  transform: scale(1.04);
+}
+
+
+.recipe-card .meta {
+  padding: 10px;
+}
+
+.favorite-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.footer {
+  padding: 18px;
+  text-align: center;
+  margin-top: 24px;
+}
+
+.tips-list {
+  max-width: 800px;
+}
+
+input#search {
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 880px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .hero-video iframe {
+    height: 180px;
+  }
+}
+
+/* Responsive topbar styles */
+@media (max-width: 768px) {
+  .topbar {
+    padding: 8px 16px;
+  }
+
+  .brand h1 {
+    font-size: 1.1rem;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .menu {
+    gap: 4px;
+  }
+
+  .menu a {
+    padding: 4px 8px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .brand {
+    justify-content: center;
+  }
+
+  .menu {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .menu a {
+    flex: 1;
+    text-align: center;
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar {
+    padding: 8px 12px;
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .brand h1 {
+    font-size: 1rem;
+  }
+
+  .logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 12px 12px;
+    padding: 12px;
+    z-index: 1000;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .menu a {
+    flex: none;
+    text-align: center;
+    padding: 12px;
+    margin: 4px 0;
+    background: var(--card);
+    border-radius: 8px;
+  }
+
+  .menu button {
+    padding: 12px;
+    margin: 4px 0;
+    background: var(--card);
+    border-radius: 8px;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .topbar {
+    position: relative;
+  }
+}
+
+.dark {
+  --bg: #0b0b14;
+  --card: #0f1020;
+  --text: #f4f3fb;
+  --muted: #d6c7ff;
+  --accent: #8f6ee0;
+  --accent-2: #ffc7ee;
+  background-color: var(--bg);
+}
+
+.promo {
+  width: 100%;
+  border-radius: 16px;
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+.sound-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* alguns amigos me ajudaram a fazer a parte de login*/
+
+.login-container {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, var(--accent) 0%, #ffffff 100%);
+}
+
+.login-form {
+  max-width: 400px;
+  min-width: 320px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #2c2540;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2c2540;
+}
+
+.login-form input {
+  width: 100%;
+  min-width: 250px;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  outline: none;
+  background-color: #fff;
+  box-shadow: inset 0 2px 8px #00000010;
+}
+
+.login-form a {
+  display: block;
+  text-align: center;
+  margin: 8px 0;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0 10px;
+  color: #2c2540;
+  font-size: 14px;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: #f1f1f1;
+  transition: 0.2s;
+  font-size: 1.2rem;
+}
+
+.btn-icon i {
+  font-size: 22px;
+  color: #fff;
+}
+
+.btn-icon:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.toast-pink {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.toast-pink .btn-close {
+  filter: brightness(0) invert(1);
+}
+
+/* Contato */
+
+.contact-container {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 12px;
+  background: linear-gradient(180deg, var(--accent) 0%, #ffffff 100%);
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form h3 {
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.contact-form label {
+  display: block;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.03);
+  outline: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: transparent;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(165, 139, 214, 0.3);
+}
+
+.contact-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.contact-form button:hover {
+  transform: scale(1.03);
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+}
+
+.status-text {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 16px;
+  }
+
+  .contact-form {
+    padding: 20px;
+  }
+}
+
+/* Dicas - Card estilo Contato */
+.tips-section {
+  margin-top: 20px !important;
+}
+
+.tips-section .card {
+  padding: 20px !important;
+  border-radius: 12px !important;
+  background: var(--card) !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04) !important;
+  margin-bottom: 25px !important;
+}
+
+.tips-list {
+  list-style: disc inside !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+  color: var(--text) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+.tips-list li {
+  margin-bottom: 10px !important;
+}
