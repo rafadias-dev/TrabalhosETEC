@@ -182,17 +182,34 @@ function openRecipe(id) {
   if (!r) return alert('Receita não encontrada');
   // Simples modal com detalhes
   const modal = document.createElement('div');
-  modal.style =
-    'position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9999';
+  modal.style = `
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: block;        
+  overflow-y: auto;      
+  z-index: 9999;
+  padding: 20px;         
+`;
+
   modal.innerHTML = `
-  <div style="background:var(--card);padding:18px;border-radius:12px;max-width:720px;width:90%;color:var(--text)">
-   <button style="float:right" onclick="this.parentNode.parentNode.remove()">✖</button>
-  <h3>${r.title}</h3>
-   <img src="${r.img}" style="width:100%;height:260px;object-fit:cover;border-radius:8px" />
-   <p>${r.description}</p>
-   <button onclick="this.parentNode.parentNode.remove()">Fechar</button>
-   </div>
-   `;
+  <div style="
+    background: var(--card);
+    padding: 18px;
+    border-radius: 12px;
+    max-width: 720px;
+    width: 90%;
+    margin: 20px auto;
+    color: var(--text);
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  ">
+    <button style="float: right" onclick="this.parentNode.parentNode.remove()">✖</button>
+    <h3>${r.title}</h3>
+    <img src="${r.img}" style="width: 100%; height: 260px; object-fit: cover; border-radius: 8px;" />
+    <p>${r.description}</p>
+    <button onclick="this.parentNode.parentNode.remove()">Fechar</button>
+  </div>
+`;
   document.body.appendChild(modal);
 }
 
@@ -263,6 +280,8 @@ window.addEventListener('load', () => {
   setupContactForm();
   setupMobileMenu();
 
+  // pera ai dx eu testa rpra ter crtz
+
   // ligar search
   const input = document.getElementById('search');
   if (input) {
@@ -290,56 +309,60 @@ window.addEventListener('load', () => {
 });
 
 // @Eduardo
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('.login-form');
-  const CREDENTIALS = {
-    username: 'rafa@gmail.com',
-    password: '123456',
-  };
+const loginForm = document.querySelector('.login-form');
+if (loginForm) {
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
+  document.addEventListener('DOMContentLoaded', () => {
+    const CREDENTIALS = {
+      username: 'rafa@gmail.com',
+      password: '123456',
+    };
 
-    const username = form.username.value.trim();
-    const password = form.password.value.trim();
-    const toastEl = document.getElementById('login-toast');
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const username = loginForm.username.value.trim();
+      const password = loginForm.password.value.trim();
+      const toastEl = document.getElementById('login-toast');
+      const toastBody = toastEl.querySelector('.toast-body');
+      toastEl.className = 'toast toast-pink align-items-center border-0';
+      const toast = new bootstrap.Toast(toastEl);
+
+      if (username === CREDENTIALS.username && password === CREDENTIALS.password) {
+        toastBody.textContent = 'Login bem-sucedido!';
+        toast.show();
+
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1500);
+      } else {
+        toastBody.textContent = 'Credenciais inválidas. Tente novamente.';
+        toast.show();
+      }
+    });
+  });
+}
+
+const contactForm = document.getElementById('contactForm');
+const toastEl = document.getElementById('contact-toast');
+if (contactForm && toastEl) {
+  document.addEventListener('DOMContentLoaded', () => {
     const toastBody = toastEl.querySelector('.toast-body');
-    toastEl.className = 'toast toast-pink align-items-center border-0';
-    const toast = new bootstrap.Toast(toastEl);
-
-    if (username === CREDENTIALS.username && password === CREDENTIALS.password) {
-      toastBody.textContent = 'Login bem-sucedido!';
-      toast.show();
-
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 1500);
-    } else {
-      toastBody.textContent = 'Credenciais inválidas. Tente novamente.';
-      toast.show();
-    }
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = contactForm.name.value.trim();
+      const email = contactForm.email.value.trim();
+      const message = contactForm.message.value.trim();
+      toastEl.className = 'toast toast-pink align-items-center border-0';
+      const toast = new bootstrap.Toast(toastEl);
+      if (name && email && message) {
+        toastBody.textContent = 'Mensagem enviada com sucesso! ✨';
+        toast.show();
+        form.reset();
+      } else {
+        toastBody.textContent = 'Por favor, preencha todos os campos.';
+        toast.show();
+      }
+    });
   });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('contactForm');
-  const toastEl = document.getElementById('contact-toast');
-  const toastBody = toastEl.querySelector('.toast-body');
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
-    toastEl.className = 'toast toast-pink align-items-center border-0';
-    const toast = new bootstrap.Toast(toastEl);
-    if (name && email && message) {
-      toastBody.textContent = 'Mensagem enviada com sucesso! ✨';
-      toast.show();
-      form.reset();
-    } else {
-      toastBody.textContent = 'Por favor, preencha todos os campos.';
-      toast.show();
-    }
-  });
-});
+}
